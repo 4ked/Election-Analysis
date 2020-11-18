@@ -38,10 +38,8 @@ console.debug('Server listening on port ' + port);
 
 // Database connection
 const client = new Client({
-  connectionString: "postgres://fodonymaeoqrrm:1a0bff5d770f420332e8f3abaf50b95c68b4bac0ab7383944519b65b4f221831@ec2-54-158-122-162.compute-1.amazonaws.com:5432/d9sle3g0k73e01",
-  ssl: {
-      rejectUnauthorized: false
-  }
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.DATABASE_URL ? true : false
 });
 
 client.connect();
