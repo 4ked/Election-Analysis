@@ -1,4 +1,4 @@
-//map
+// map initialization
 $(document).ready(function() {
   $('#map').usmap({
     'showLabels': true,
@@ -64,7 +64,7 @@ $(document).ready(function() {
     },
     'click' : function(event, data) {
       $('#alert')
-        .text('Click ' + data.name +' on map')
+        .text(getStateInfo(data.name))
         .stop()
         .css('border', '#ffffff')
         .animate({backgroundColor: '#ddd'}, 1000);

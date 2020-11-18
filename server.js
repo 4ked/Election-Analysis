@@ -35,18 +35,25 @@ app.use(errorHandler);
 server.listen(port);
 console.debug('Server listening on port ' + port);
 
-// DATABASE
-/*
+
+// Database connection
 const client = new Client({
-    connectionString: "postgres://fodonymaeoqrrm:1a0bff5d770f420332e8f3abaf50b95c68b4bac0ab7383944519b65b4f221831@ec2-54-158-122-162.compute-1.amazonaws.com:5432/d9sle3g0k73e01"
-});
-  
-client.connect();
-  client.query('SELECT *,states FROM information_schema.tables;', (err, res) => {
-        if (err) throw err;
-      for (let row of res.rows) {
-          console.log(JSON.stringify(row));
+  connectionString: "postgres://fodonymaeoqrrm:1a0bff5d770f420332e8f3abaf50b95c68b4bac0ab7383944519b65b4f221831@ec2-54-158-122-162.compute-1.amazonaws.com:5432/d9sle3g0k73e01",
+  ssl: {
+      rejectUnauthorized: false
   }
-    client.end();
 });
-*/
+
+client.connect();
+
+// Function that takes in a state id, sends back data for state
+function getStateInfo(id) {
+  client.query('SELECT * FROM states WHERE abbr = \'' + id + '\';', (err, res) => {
+    if(err) throw err;
+    for(let row of res.rows) {
+        console.log(JSON.stringify(row));
+    }
+    client.end();
+  });
+}
+  

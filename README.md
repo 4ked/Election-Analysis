@@ -29,3 +29,11 @@ Move into the root/backend directory, and initialize the environment by typing:
 ```sh
 npm install
 ```
+
+### Step Three: Running Locally
+
+For test development, enter the following and head to [http://localhost:3000](http://localhost:3000). Be wary there will be no valid database connection given we are deployed on heroku.
+
+```sh
+npm start
+```
