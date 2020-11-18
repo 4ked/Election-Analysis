@@ -8,11 +8,12 @@ const { Client } = require('pg');
 const app = express();
 
 const server = http.createServer(app);
-const port = 3000;
 
 app.use(express.json());
 app.use(express.static("express"));
 app.use(express.static(path.join(__dirname+'/')))
+
+app.set('port', (process.env.PORT || 5000));
 
 // default URL for website
 app.use('/', function(req,res){
@@ -32,10 +33,10 @@ const errorHandler = function(err, req, res, next) {
 
 app.use(errorHandler);
 
-server.listen(port);
-console.debug('Server listening on port ' + port);
+server.listen(process.env.PORT || 5000);
+console.debug('Server listening on port ' + process.env.PORT);
 
-
+/*
 // Database connection
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -54,4 +55,5 @@ function getStateInfo(id) {
     client.end();
   });
 }
+*/
   

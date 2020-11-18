@@ -64,13 +64,25 @@ $(document).ready(function() {
     },
     'click' : function(event, data) {
       $('#alert')
-        .text(JSON.stringify(states[data.name]))
+        .text(printData(data.name))
         .stop()
         .css('border', '#ffffff')
         .animate({backgroundColor: '#ddd'}, 1000);
     }
   });
 });
+
+function printData(id) {
+  var data = states[id];
+  var res = [];
+  for(var i in data)
+    res.push([i,data[i]]);
+  return "State: " + res[0][1] + "; Republican Votes: " + numberWithCommas(res[1][1]) + "; Democrat Votes: " + numberWithCommas(res[2][1]) + "; Electoral Votes: " + res[3][1];
+}
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 // data
 const states = {
