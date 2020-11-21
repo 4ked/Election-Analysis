@@ -1,6 +1,6 @@
 # Election-Analysis
 
-Our group is creating an interactive map of the 2020 presidential election results. The goal is to show common statistics such as party victories by state and their victory percentage ratios, but also more information such as votes over time.
+My function within the project was to create a working database for the counted votes. I did this by creating a spreadsheet for the website and coding it into the backend part of our project.
 
 ## Tech Stack
 
